@@ -1,0 +1,20 @@
+!macro CustomCodePostInstall
+
+	ReadINIStr $0 "$INSTDIR\App\AppInfo\installer.ini" "DownloadFiles" "DoubleExtract1Filter"
+	nsExec::Exec `"$INSTDIR\7zTemp\7z.exe" x "$INSTDIR\App\BGSTransInstaller\$0" -o"$INSTDIR\App\BGSTrans"`
+	Pop $R1
+
+	RMDir /r "$INSTDIR\App\BGSTransInstaller"
+
+	Rename "$INSTDIR\App\BGSTrans\_4EC8885BC9064D70948CD9E3EA6F1D6C" "$INSTDIR\App\BGSTrans\BGSTrans_en.chm"
+	Rename "$INSTDIR\App\BGSTrans\_5B97CED4932E441A8537F65A14A25443" "$INSTDIR\App\BGSTrans\geoidbul.grd"
+	Rename "$INSTDIR\App\BGSTrans\_18FA495DA3164D5D86052C55C04AF59E" "$INSTDIR\App\BGSTrans\Manual_en.doc"
+	Rename "$INSTDIR\App\BGSTrans\_96DA9012ABF44F398A8428F4E943119F" "$INSTDIR\App\BGSTrans\Manual_bg.doc"
+	Rename "$INSTDIR\App\BGSTrans\_572E8288D6464AE5B2C0B96DFF5F7246" "$INSTDIR\App\BGSTrans\BGSTrans.exe"
+	Rename "$INSTDIR\App\BGSTrans\_5974C6D77A1A490A8C21441271660F03" "$INSTDIR\App\BGSTrans\BGSTrans_bg.chm"
+	Rename "$INSTDIR\App\BGSTrans\_2140698242A74AEAA50C7F9CC764634B" "$INSTDIR\App\BGSTrans\egm96.grd"
+	Rename "$INSTDIR\App\BGSTrans\_EB11EE73373644498B1B2F9425027E93" "$INSTDIR\App\BGSTrans\BGSTrans.jpg"
+
+	Delete "$INSTDIR\App\BGSTrans\_C6315E4B27A541BEA0E5CA193A0A20C2"
+
+!macroend
